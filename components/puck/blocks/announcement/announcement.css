@@ -1,0 +1,75 @@
+.p1-announcement {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  padding-block: 0.75rem;
+  padding-inline: var(--p1-space-lg);
+}
+
+.p1-announcement[data-align="center"] { justify-content: center; }
+.p1-announcement[data-align="left"] { justify-content: start; }
+
+.p1-announcement[data-tone="accent"] {
+  background-color: var(--p1-accent);
+  color: var(--p1-fg-inverse);
+}
+.p1-announcement[data-tone="yellow"] {
+  background-color: var(--p1-cta-bg);
+  color: var(--p1-cta-fg);
+}
+.p1-announcement[data-tone="dark"] {
+  background-color: var(--p1-surface-dark);
+  color: var(--p1-fg-inverse);
+}
+.p1-announcement[data-tone="gradient"] {
+  background: linear-gradient(90deg, var(--p1-gradient-from), var(--p1-gradient-via), var(--p1-gradient-to));
+  color: var(--p1-fg-inverse);
+}
+
+.p1-announcement__text { font-size: var(--p1-text-sm); font-weight: var(--p1-weight-medium); }
+
+.p1-announcement__link { font-size: var(--p1-text-sm); font-weight: var(--p1-weight-bold); text-decoration: none; }
+.p1-announcement[data-tone="accent"] .p1-announcement__link { color: var(--p1-highlight); }
+.p1-announcement[data-tone="yellow"] .p1-announcement__link { color: var(--p1-accent); }
+.p1-announcement[data-tone="dark"] .p1-announcement__link { color: var(--p1-highlight); }
+.p1-announcement[data-tone="gradient"] .p1-announcement__link { color: var(--p1-highlight); }
+
+/* Style overrides the tone colours when set to anything but "default". */
+.p1-announcement[data-style="quiet"] { background: var(--p1-surface-dark); color: var(--p1-fg-inverse); }
+.p1-announcement[data-style="bold"] { background: var(--p1-cta-bg); color: var(--p1-cta-fg); }
+.p1-announcement[data-style="critical"] { background: var(--p1-critical); color: var(--p1-fg-inverse); }
+.p1-announcement:not([data-style="default"]) .p1-announcement__link { color: inherit; text-decoration: underline; }
+
+.p1-announcement { position: relative; }
+.p1-announcement__icon { display: inline-flex; }
+.p1-announcement__icon svg,
+.p1-announcement__dismiss svg { height: 1rem; width: 1rem; }
+
+.p1-announcement__dismiss {
+  align-items: center;
+  cursor: pointer;
+  display: inline-flex;
+  inset-block: 0;
+  margin-block: auto;
+  padding: var(--p1-space-xs);
+  position: absolute;
+  right: var(--p1-space-md);
+  height: fit-content;
+}
+
+/* Checkbox is hidden but still keyboard focusable; checking it hides the bar. */
+/* Visually hidden but focusable. With no offsets it stays at its place in the flow, so focusing it does not scroll. */
+.p1-announcement__toggle {
+  block-size: 1px;
+  clip-path: inset(50%);
+  inline-size: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+}
+.p1-announcement__toggle:checked + .p1-announcement { display: none; }
+.p1-announcement__toggle:focus-visible + .p1-announcement .p1-announcement__dismiss {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}

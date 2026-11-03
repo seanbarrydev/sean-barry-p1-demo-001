@@ -1,0 +1,50 @@
+.p1-callout-box { --callout-color: var(--p1-accent); }
+.p1-callout-box[data-variant="warning"] { --callout-color: var(--p1-warning); }
+.p1-callout-box[data-variant="success"] { --callout-color: var(--p1-success); }
+.p1-callout-box[data-variant="critical"] { --callout-color: var(--p1-critical); }
+
+.p1-callout-box__inner {
+  margin-inline: auto;
+  max-inline-size: var(--p1-container-narrow);
+  padding-inline: var(--p1-space-lg);
+}
+
+.p1-callout-box__box {
+  align-items: flex-start;
+  background-color: color-mix(in oklch, var(--callout-color) 10%, var(--p1-surface-default));
+  border-radius: var(--p1-radius-card);
+  display: flex;
+  gap: var(--p1-space-md);
+  padding: var(--p1-space-md) var(--p1-space-lg);
+}
+.p1-callout-box[data-border="left-bar"] .p1-callout-box__box { border-inline-start: 4px solid var(--callout-color); }
+.p1-callout-box[data-border="outline"] .p1-callout-box__box { border: 1.5px solid var(--callout-color); }
+
+.p1-callout-box__icon { color: var(--callout-color); display: inline-flex; flex: none; margin-block-start: 2px; }
+.p1-callout-box__icon svg { block-size: 1.25rem; inline-size: 1.25rem; }
+
+.p1-callout-box__content { flex: 1; min-inline-size: 0; }
+.p1-callout-box__title {
+  color: var(--callout-color);
+  font-size: var(--p1-text-base);
+  font-weight: var(--p1-weight-bold);
+  margin-block-end: 0.25rem;
+}
+.p1-callout-box__text {
+  color: var(--p1-fg-default);
+  font-size: var(--p1-text-base);
+  line-height: var(--p1-leading-normal);
+  margin: 0;
+  text-wrap: pretty;
+}
+
+.p1-callout-box__dismiss { color: var(--p1-fg-muted); cursor: pointer; display: inline-flex; flex: none; }
+.p1-callout-box__dismiss svg { block-size: 1rem; inline-size: 1rem; }
+
+/* Checkbox is hidden but stays keyboard focusable; checking it hides the box. */
+.p1-callout-box__toggle { block-size: 1px; inline-size: 1px; opacity: 0; position: absolute; }
+.p1-callout-box__toggle:checked + .p1-callout-box__inner { display: none; }
+.p1-callout-box__toggle:focus-visible + .p1-callout-box__inner .p1-callout-box__dismiss {
+  outline: 2px solid var(--callout-color);
+  outline-offset: 2px;
+}

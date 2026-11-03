@@ -1,0 +1,199 @@
+.p1-event-calendar { container-type: inline-size; }
+
+.p1-event-calendar__bar {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--p1-space-md);
+  justify-content: space-between;
+  margin-block-end: var(--p1-space-lg);
+}
+.p1-event-calendar__month {
+  align-items: center;
+  display: flex;
+  font-family: var(--p1-font-heading);
+  font-size: var(--p1-text-xl);
+  gap: var(--p1-space-sm);
+}
+.p1-event-calendar__nav { block-size: 1rem; inline-size: 1rem; }
+.p1-event-calendar__tools { display: flex; flex-wrap: wrap; gap: var(--p1-space-sm); }
+.p1-event-calendar__tool-icon { block-size: 0.75rem; inline-size: 0.75rem; }
+.p1-event-calendar__filter[data-active] {
+  background-color: var(--p1-fg-default);
+  color: var(--p1-surface-default);
+}
+
+/* Month grid */
+.p1-event-calendar__grid {
+  border: 1px solid var(--p1-border);
+  border-radius: var(--p1-radius-card);
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  overflow: hidden;
+}
+.p1-event-calendar__weekday {
+  background-color: var(--p1-surface-subtle);
+  border-block-end: 1px solid var(--p1-border);
+  color: var(--p1-fg-muted);
+  font-size: var(--p1-text-xs);
+  font-weight: var(--p1-weight-bold);
+  padding: var(--p1-space-sm);
+  text-transform: uppercase;
+}
+.p1-event-calendar__cell {
+  border-inline-end: 1px solid var(--p1-border);
+  border-block-end: 1px solid var(--p1-border);
+  font-size: var(--p1-text-xs);
+  min-block-size: 4.5rem;
+  min-inline-size: 0;
+  padding: var(--p1-space-xs);
+}
+.p1-event-calendar__cell:nth-child(7n) { border-inline-end: 0; }
+.p1-event-calendar__cell[data-blank] { background-color: var(--p1-surface-subtle); }
+.p1-event-calendar__num { display: block; }
+.p1-event-calendar__chip {
+  background-color: var(--p1-accent);
+  border-radius: var(--p1-radius-sm);
+  color: var(--p1-fg-inverse);
+  display: block;
+  font-size: var(--p1-text-xs);
+  font-weight: var(--p1-weight-bold);
+  margin-block-start: var(--p1-space-xs);
+  overflow: hidden;
+  padding: 0.125rem var(--p1-space-xs);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Week strip */
+.p1-event-calendar__week {
+  display: grid;
+  gap: var(--p1-space-sm);
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+}
+.p1-event-calendar__week-day {
+  background-color: var(--p1-surface-default);
+  border: 1px solid var(--p1-border);
+  border-radius: var(--p1-radius-card);
+  display: flex;
+  flex-direction: column;
+  gap: var(--p1-space-sm);
+  min-block-size: 7.5rem;
+  min-inline-size: 0;
+  padding: var(--p1-space-md);
+}
+.p1-event-calendar__week-label {
+  color: var(--p1-fg-muted);
+  font-size: var(--p1-text-xs);
+  font-weight: var(--p1-weight-bold);
+  white-space: nowrap;
+}
+.p1-event-calendar__week-label strong { color: var(--p1-fg-default); }
+.p1-event-calendar__week-event {
+  background-color: var(--p1-accent);
+  border-radius: var(--p1-radius-sm);
+  color: var(--p1-fg-inverse);
+  font-size: var(--p1-text-xs);
+  font-weight: var(--p1-weight-bold);
+  overflow-wrap: anywhere;
+  padding: var(--p1-space-xs) var(--p1-space-sm);
+}
+.p1-event-calendar__week-time { display: block; font-weight: var(--p1-weight-medium); }
+
+/* Agenda and map list */
+.p1-event-calendar__list {
+  border-block-start: 1px solid var(--p1-border);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.p1-event-calendar__row {
+  align-items: center;
+  border-block-end: 1px solid var(--p1-border);
+  display: flex;
+  gap: var(--p1-space-lg);
+  padding-block: var(--p1-space-md);
+}
+.p1-event-calendar__row-body { flex: 1; min-inline-size: 0; }
+.p1-event-calendar__row-title { font-family: var(--p1-font-heading); font-size: var(--p1-text-lg); margin: 0; }
+.p1-event-calendar__row-meta { color: var(--p1-fg-muted); font-size: var(--p1-text-sm); margin: 0; }
+.p1-event-calendar__date {
+  border: 1px solid var(--p1-border);
+  border-radius: var(--p1-radius-card);
+  flex: none;
+  inline-size: 4rem;
+  padding-block: var(--p1-space-sm);
+  text-align: center;
+}
+.p1-event-calendar__date-mon {
+  color: var(--p1-fg-muted);
+  display: block;
+  font-size: var(--p1-text-xs);
+  font-weight: var(--p1-weight-bold);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.p1-event-calendar__date-day { display: block; font-size: var(--p1-text-2xl); font-weight: var(--p1-weight-bold); }
+
+/* Map view */
+.p1-event-calendar__map-wrap {
+  align-items: start;
+  display: grid;
+  gap: var(--p1-gutter-md);
+  grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+}
+.p1-event-calendar__map { position: relative; }
+.p1-event-calendar__map-img {
+  aspect-ratio: 4 / 3;
+  border-radius: var(--p1-radius-card);
+  display: block;
+  inline-size: 100%;
+  object-fit: cover;
+}
+.p1-event-calendar__pin {
+  background-color: var(--p1-accent);
+  border: 2px solid var(--p1-surface-default);
+  border-radius: 50% 50% 50% 0;
+  block-size: 1.875rem;
+  color: var(--p1-fg-inverse);
+  display: grid;
+  font-size: var(--p1-text-xs);
+  font-weight: var(--p1-weight-bold);
+  inline-size: 1.875rem;
+  inset-block-start: var(--y);
+  inset-inline-start: var(--x);
+  place-items: center;
+  position: absolute;
+  transform: rotate(-45deg);
+}
+.p1-event-calendar__pin > span { transform: rotate(45deg); }
+.p1-event-calendar__num-badge {
+  background-color: var(--p1-accent);
+  block-size: 1.75rem;
+  border-radius: var(--p1-radius-pill);
+  color: var(--p1-fg-inverse);
+  display: grid;
+  flex: none;
+  font-size: var(--p1-text-xs);
+  font-weight: var(--p1-weight-bold);
+  inline-size: 1.75rem;
+  place-items: center;
+}
+
+/* Narrow containers: dots instead of chip text, stacked week, single-column map. */
+@container (width < 37.5rem) {
+  .p1-event-calendar__chip {
+    block-size: 0.5rem;
+    border-radius: var(--p1-radius-pill);
+    display: inline-block;
+    font-size: 0;
+    inline-size: 0.5rem;
+    margin-inline-end: var(--p1-space-xs);
+    padding: 0;
+  }
+  .p1-event-calendar__cell { min-block-size: 3.25rem; }
+  .p1-event-calendar__week { grid-template-columns: minmax(0, 1fr); }
+  .p1-event-calendar__week-day { flex-direction: row; gap: var(--p1-space-md); min-block-size: 0; }
+  .p1-event-calendar__week-label { flex: none; inline-size: 4rem; }
+  .p1-event-calendar__map-wrap { grid-template-columns: minmax(0, 1fr); }
+}

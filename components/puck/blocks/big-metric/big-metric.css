@@ -1,0 +1,66 @@
+.p1-big-metric .p1-sec {
+  padding-block: calc(var(--p1-section-y) * 1.5);
+}
+
+.p1-big-metric__metric {
+  text-align: center;
+}
+.p1-big-metric__value {
+  font-size: clamp(5rem, 14vw, 11rem);
+  font-weight: var(--p1-weight-bold);
+  letter-spacing: -0.04em;
+  line-height: 1;
+}
+.p1-big-metric__label {
+  font-size: var(--p1-text-base);
+  font-weight: var(--p1-weight-semibold);
+  margin-block-start: var(--p1-space-sm);
+}
+
+.p1-big-metric__trio {
+  display: grid;
+  gap: var(--p1-space-xl);
+}
+.p1-big-metric__trio .p1-big-metric__value {
+  font-size: clamp(3rem, 7vw, 5.5rem);
+}
+@media (width >= 48rem) {
+  .p1-big-metric__trio {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.p1-big-metric__split {
+  align-items: center;
+  display: grid;
+  gap: var(--p1-space-2xl);
+}
+.p1-big-metric__split .p1-big-metric__value {
+  font-size: clamp(4rem, 10vw, 8rem);
+}
+@media (width >= 48rem) {
+  .p1-big-metric__split {
+    grid-template-columns: 1fr 1.4fr;
+  }
+}
+
+.p1-big-metric__quote {
+  margin: 0;
+  text-align: center;
+}
+.p1-big-metric__split .p1-big-metric__quote {
+  text-align: start;
+}
+.p1-big-metric__quote blockquote {
+  font-size: clamp(1.375rem, 3vw, 2.25rem);
+  font-weight: var(--p1-weight-medium);
+  letter-spacing: -0.01em;
+  line-height: 1.3;
+  margin: 0;
+}
+.p1-big-metric__quote figcaption {
+  font-size: var(--p1-text-sm);
+  font-weight: var(--p1-weight-semibold);
+  margin-block-start: var(--p1-space-lg);
+  opacity: 0.75;
+}

@@ -1,0 +1,123 @@
+.p1-logo-cloud__inner {
+  margin-inline: auto;
+  max-inline-size: var(--p1-container-default);
+}
+
+.p1-logo-cloud__heading {
+  color: var(--p1-fg-muted);
+  font-size: var(--p1-text-sm);
+  font-weight: var(--p1-weight-bold);
+  letter-spacing: 0.14em;
+  margin-block-end: var(--p1-space-lg);
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.p1-logo-cloud__list {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--p1-space-lg) 3rem;
+  justify-content: center;
+}
+
+.p1-logo-cloud[data-align="left"] .p1-logo-cloud__heading { text-align: start; }
+.p1-logo-cloud[data-align="left"] .p1-logo-cloud__list { justify-content: flex-start; }
+
+/* Two rows: narrow enough that the logos wrap into two lines. */
+.p1-logo-cloud[data-layout="two-rows"] .p1-logo-cloud__list {
+  margin-inline: auto;
+  max-inline-size: 45rem;
+}
+.p1-logo-cloud[data-layout="two-rows"][data-align="left"] .p1-logo-cloud__list { margin-inline: 0; }
+
+/* Grid: bordered cells, four across. */
+.p1-logo-cloud[data-layout="grid-4-2"] .p1-logo-cloud__list {
+  display: grid;
+  gap: var(--p1-space-lg);
+  grid-template-columns: repeat(4, 1fr);
+}
+.p1-logo-cloud__cell {
+  align-items: center;
+  border: 1px solid var(--p1-border);
+  border-radius: var(--p1-radius-card);
+  display: flex;
+  justify-content: center;
+  padding: var(--p1-space-lg) var(--p1-space-sm);
+}
+@media (max-width: 40rem) {
+  .p1-logo-cloud[data-layout="grid-4-2"] .p1-logo-cloud__list { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* Marquee: the track holds two copies and slides by half its width. */
+.p1-logo-cloud[data-layout="marquee"] .p1-logo-cloud__list {
+  display: block;
+  overflow: hidden;
+}
+.p1-logo-cloud__track {
+  align-items: center;
+  display: flex;
+  gap: 3rem;
+  inline-size: max-content;
+  padding-inline-end: 3rem;
+}
+@keyframes p1-logo-cloud-scroll {
+  to { transform: translateX(-50%); }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .p1-logo-cloud__track { animation: p1-logo-cloud-scroll 30s linear infinite; }
+  /* Hover and keyboard focus pause the scroll, so a reader can stop it to read a name. */
+  .p1-logo-cloud:is(:hover, :focus-within) .p1-logo-cloud__track { animation-play-state: paused; }
+}
+/* Reduced motion: no scrolling, so wrap the logos and drop the repeated copy. */
+@media (prefers-reduced-motion: reduce) {
+  .p1-logo-cloud[data-layout="marquee"] .p1-logo-cloud__track {
+    flex-wrap: wrap;
+    inline-size: auto;
+    justify-content: center;
+  }
+  .p1-logo-cloud__track > [aria-hidden="true"] { display: none; }
+}
+
+.p1-logo-cloud a.p1-logo-cloud__item,
+.p1-logo-cloud a.p1-logo-cloud__placeholder { text-decoration: none; }
+.p1-logo-cloud a:hover .p1-logo-cloud__label,
+.p1-logo-cloud a.p1-logo-cloud__placeholder:hover { text-decoration: underline; }
+
+.p1-logo-cloud__item {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+}
+
+.p1-logo-cloud__label {
+  color: var(--p1-fg-muted);
+  font-size: var(--p1-text-lg);
+  font-weight: var(--p1-weight-medium);
+}
+
+.p1-logo-cloud__img {
+  inline-size: auto;
+  max-inline-size: 11.25rem;
+  object-fit: contain;
+}
+
+/* Logo heights */
+.p1-logo-cloud[data-height="small"] .p1-logo-cloud__img { block-size: 1.625rem; }
+.p1-logo-cloud[data-height="medium"] .p1-logo-cloud__img { block-size: 2.375rem; }
+.p1-logo-cloud[data-height="large"] .p1-logo-cloud__img { block-size: 3.25rem; }
+
+/* Mono style */
+.p1-logo-cloud[data-style="mono"] .p1-logo-cloud__img {
+  filter: grayscale(1);
+  opacity: 0.6;
+}
+
+.p1-logo-cloud__placeholder {
+  color: var(--p1-border-strong);
+  font-size: var(--p1-text-xl);
+  font-weight: 800;
+  letter-spacing: 0.05em;
+}
+.p1-logo-cloud[data-style="color"] .p1-logo-cloud__placeholder { color: var(--p1-fg-default); }

@@ -1,0 +1,123 @@
+.p1-code-block {
+  --code-bg: var(--p1-surface-dark);
+  --code-fg: var(--p1-fg-inverse);
+  --code-line: var(--p1-border-inverse);
+  --code-tab-on: var(--p1-border-inverse);
+  --code-output: var(--p1-success);
+  background: var(--code-bg);
+  border-radius: var(--p1-radius-card);
+  color: var(--code-fg);
+  overflow: hidden;
+}
+.p1-code-block[data-theme="light"] {
+  --code-bg: var(--p1-surface-subtle);
+  --code-fg: var(--p1-fg-default);
+  --code-line: var(--p1-border-strong);
+  --code-tab-on: var(--p1-surface-default);
+  border: 1px solid var(--p1-border-strong);
+}
+
+.p1-code-block__radio {
+  block-size: 1px;
+  clip-path: inset(50%);
+  inline-size: 1px;
+  overflow: hidden;
+  position: absolute;
+}
+
+.p1-code-block__bar {
+  align-items: center;
+  border-block-end: 1px solid var(--code-line);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--p1-space-sm);
+  padding: var(--p1-space-sm) var(--p1-space-md);
+}
+
+.p1-code-block__tab {
+  border-radius: var(--p1-radius-sm);
+  cursor: pointer;
+  font-size: var(--p1-text-sm);
+  font-weight: var(--p1-weight-semibold);
+  opacity: 0.6;
+  padding: var(--p1-space-xs) var(--p1-space-md);
+}
+.p1-code-block__tab:hover { opacity: 0.85; }
+
+.p1-code-block__filename {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: var(--p1-text-sm);
+  margin-inline-start: auto;
+  opacity: 0.6;
+}
+
+.p1-code-block__panel {
+  counter-reset: line;
+  display: none;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: var(--p1-text-sm);
+  line-height: 1.7;
+  margin: 0;
+  overflow-x: auto;
+  padding-block: var(--p1-space-md);
+}
+
+.p1-code-block__line {
+  border-inline-start: 3px solid transparent;
+  counter-increment: line;
+  display: block;
+  padding-inline: var(--p1-space-md);
+  white-space: pre;
+}
+.p1-code-block[data-line-numbers="on"] .p1-code-block__line::before {
+  content: counter(line);
+  display: inline-block;
+  inline-size: 2.5ch;
+  margin-inline-end: var(--p1-space-md);
+  opacity: 0.4;
+}
+.p1-code-block__line[data-highlight="true"] {
+  background: color-mix(in oklch, var(--p1-cta-bg) 20%, transparent);
+  border-inline-start-color: var(--p1-cta-bg);
+}
+
+.p1-code-block__output {
+  border-block-start: 1px solid var(--code-line);
+  color: var(--code-output);
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: var(--p1-text-sm);
+  padding: var(--p1-space-md);
+}
+
+/* Tab n is shown when radio n is checked. Eight tabs is the ceiling. */
+.p1-code-block__radio:nth-of-type(1):checked ~ .p1-code-block__bar .p1-code-block__tab:nth-of-type(1),
+.p1-code-block__radio:nth-of-type(2):checked ~ .p1-code-block__bar .p1-code-block__tab:nth-of-type(2),
+.p1-code-block__radio:nth-of-type(3):checked ~ .p1-code-block__bar .p1-code-block__tab:nth-of-type(3),
+.p1-code-block__radio:nth-of-type(4):checked ~ .p1-code-block__bar .p1-code-block__tab:nth-of-type(4),
+.p1-code-block__radio:nth-of-type(5):checked ~ .p1-code-block__bar .p1-code-block__tab:nth-of-type(5),
+.p1-code-block__radio:nth-of-type(6):checked ~ .p1-code-block__bar .p1-code-block__tab:nth-of-type(6),
+.p1-code-block__radio:nth-of-type(7):checked ~ .p1-code-block__bar .p1-code-block__tab:nth-of-type(7),
+.p1-code-block__radio:nth-of-type(8):checked ~ .p1-code-block__bar .p1-code-block__tab:nth-of-type(8) {
+  background: var(--code-tab-on);
+  opacity: 1;
+}
+
+.p1-code-block__radio:nth-of-type(1):checked ~ .p1-code-block__panel:nth-of-type(1),
+.p1-code-block__radio:nth-of-type(2):checked ~ .p1-code-block__panel:nth-of-type(2),
+.p1-code-block__radio:nth-of-type(3):checked ~ .p1-code-block__panel:nth-of-type(3),
+.p1-code-block__radio:nth-of-type(4):checked ~ .p1-code-block__panel:nth-of-type(4),
+.p1-code-block__radio:nth-of-type(5):checked ~ .p1-code-block__panel:nth-of-type(5),
+.p1-code-block__radio:nth-of-type(6):checked ~ .p1-code-block__panel:nth-of-type(6),
+.p1-code-block__radio:nth-of-type(7):checked ~ .p1-code-block__panel:nth-of-type(7),
+.p1-code-block__radio:nth-of-type(8):checked ~ .p1-code-block__panel:nth-of-type(8) {
+  display: block;
+}
+
+.p1-code-block__radio:focus-visible ~ .p1-code-block__bar {
+  outline: 2px solid var(--p1-accent);
+  outline-offset: -2px;
+}
+.p1-code-block__panel:focus-visible {
+  outline: 2px solid var(--p1-accent);
+  outline-offset: -2px;
+}

@@ -1,0 +1,212 @@
+.p1-comparison-table {
+  padding-block: var(--p1-space-xl);
+  padding-inline: var(--p1-space-lg);
+}
+
+.p1-comparison__inner {
+  margin-inline: auto;
+  max-inline-size: var(--p1-container-wide);
+}
+
+.p1-comparison__header {
+  margin-block-end: var(--p1-space-xl);
+  text-align: center;
+}
+
+.p1-comparison__eyebrow {
+  color: var(--p1-accent);
+  font-size: var(--p1-text-xl);
+  font-style: italic;
+  margin-block-end: var(--p1-space-sm);
+}
+
+.p1-comparison__heading {
+  font-size: var(--p1-text-3xl);
+  font-weight: var(--p1-weight-bold);
+  letter-spacing: -0.02em;
+  color: var(--p1-fg-default);
+}
+@media (width >= 48rem) {
+  .p1-comparison__heading { font-size: var(--p1-text-4xl); }
+}
+
+.p1-comparison__subtitle {
+  color: var(--p1-fg-muted);
+  margin-block-start: var(--p1-space-sm);
+}
+
+/* Wide table — hidden on narrow */
+.p1-comparison__table-wrap { display: none; overflow-x: auto; }
+@media (width >= 48rem) { .p1-comparison__table-wrap { display: block; } }
+
+.p1-comparison__table {
+  border-collapse: separate;
+  border-spacing: 0;
+  inline-size: 100%;
+  /* Break long words and URLs inside a cell; the fixed layout keeps the table at the wrap's width. */
+  overflow-wrap: anywhere;
+  table-layout: fixed;
+}
+
+.p1-comparison__feature-col {
+  color: var(--p1-fg-muted);
+  font-size: var(--p1-text-xs);
+  font-weight: var(--p1-weight-bold);
+  inline-size: 34%;
+  letter-spacing: 0.04em;
+  padding: var(--p1-space-md);
+  text-align: start;
+  text-transform: uppercase;
+  vertical-align: bottom;
+}
+
+.p1-comparison__col-head {
+  border-block-end: 2px solid var(--p1-border);
+  color: var(--p1-fg-default);
+  font-size: var(--p1-text-lg);
+  font-weight: var(--p1-weight-bold);
+  padding: var(--p1-space-md);
+  text-align: center;
+}
+.p1-comparison__col-head[data-hot="true"] {
+  background-color: var(--p1-accent);
+  border-block-end: none;
+  border-start-end-radius: var(--p1-radius-card);
+  border-start-start-radius: var(--p1-radius-card);
+  color: var(--p1-fg-inverse);
+}
+
+.p1-comparison__row-label {
+  border-block-end: 1px solid var(--p1-border-subtle);
+  color: var(--p1-fg-default);
+  font-size: var(--p1-text-sm);
+  font-weight: var(--p1-weight-semibold);
+  padding: var(--p1-space-md);
+}
+
+.p1-comparison__cell {
+  border-block-end: 1px solid var(--p1-border-subtle);
+  padding: var(--p1-space-md);
+  text-align: center;
+}
+.p1-comparison__cell[data-hot="true"] {
+  background-color: color-mix(in oklch, var(--p1-accent) 6%, transparent);
+}
+
+.p1-comparison__check {
+  block-size: 1.25rem;
+  color: var(--p1-success, oklch(0.6 0.15 150));
+  display: block;
+  inline-size: 1.25rem;
+  margin-inline: auto;
+}
+.p1-comparison__cell[data-hot="true"] .p1-comparison__check { color: var(--p1-accent); }
+.p1-comparison__col-head[data-hot="true"] .p1-comparison__check { color: var(--p1-fg-inverse); }
+
+.p1-comparison__cross {
+  block-size: 1.125rem;
+  color: var(--p1-border);
+  display: block;
+  inline-size: 1.125rem;
+  margin-inline: auto;
+}
+
+.p1-comparison__dash { color: var(--p1-border); }
+
+.p1-comparison__val {
+  color: var(--p1-fg-default);
+  font-size: var(--p1-text-sm);
+  font-weight: var(--p1-weight-semibold);
+}
+
+/* Narrow stacked cards — hidden on wide */
+.p1-comparison__cards { display: grid; gap: var(--p1-space-md); }
+@media (width >= 48rem) { .p1-comparison__cards { display: none; } }
+
+.p1-comparison__card {
+  border: 1px solid var(--p1-border);
+  border-radius: var(--p1-radius-card);
+  overflow: hidden;
+}
+.p1-comparison__card[data-hot="true"] {
+  border: 2px solid var(--p1-accent);
+}
+
+.p1-comparison__card-head {
+  background-color: var(--p1-surface-subtle);
+  color: var(--p1-fg-default);
+  font-size: var(--p1-text-lg);
+  font-weight: var(--p1-weight-bold);
+  padding: var(--p1-space-md);
+}
+.p1-comparison__card[data-hot="true"] .p1-comparison__card-head {
+  background-color: var(--p1-accent);
+  color: var(--p1-fg-inverse);
+}
+
+.p1-comparison__card-row {
+  align-items: center;
+  border-block-start: 1px solid var(--p1-border-subtle);
+  display: flex;
+  gap: var(--p1-space-sm);
+  justify-content: space-between;
+  padding-block: var(--p1-space-sm);
+  padding-inline: var(--p1-space-md);
+}
+
+.p1-comparison__card-label {
+  color: var(--p1-fg-muted);
+  font-size: var(--p1-text-sm);
+}
+
+.p1-comparison__card-val { flex-shrink: 0; }
+
+.p1-comparison__card[data-hot="true"] .p1-comparison__check { color: var(--p1-accent); }
+
+/* Sticky header: the wrap must not clip overflow or the header cannot stick to the page. */
+.p1-comparison__table-wrap[data-sticky="true"] { overflow: visible; }
+.p1-comparison__table-wrap[data-sticky="true"] thead th {
+  background-color: var(--p1-surface-default);
+  inset-block-start: 0;
+  position: sticky;
+  z-index: 1;
+}
+.p1-comparison__table-wrap[data-sticky="true"] thead th[data-hot="true"] { background-color: var(--p1-accent); }
+/* Collapsible groups are separate tables, so the header table itself sticks across all of them. */
+.p1-comparison__table-wrap[data-sticky="true"][data-collapsible="true"] > .p1-comparison__table:first-child {
+  inset-block-start: 0;
+  position: sticky;
+  z-index: 1;
+}
+
+/* Header kept in the table for screen readers; the row itself takes no space. */
+.p1-comparison__sr-head th { border: 0; padding: 0; }
+
+/* Row groups */
+.p1-comparison__col-feature { inline-size: 34%; }
+.p1-comparison__group-label,
+.p1-comparison__group-summary {
+  background-color: var(--p1-surface-subtle);
+  border-block-end: 1px solid var(--p1-border-subtle);
+  color: var(--p1-fg-muted);
+  font-size: var(--p1-text-xs);
+  font-weight: var(--p1-weight-bold);
+  letter-spacing: 0.04em;
+  padding: var(--p1-space-sm) var(--p1-space-md);
+  text-align: start;
+  text-transform: uppercase;
+}
+.p1-comparison__group-summary { cursor: pointer; }
+.p1-comparison__group-summary:focus-visible {
+  outline: 2px solid var(--p1-accent);
+  outline-offset: -2px;
+}
+.p1-comparison__card-group {
+  background-color: var(--p1-surface-subtle);
+  color: var(--p1-fg-muted);
+  font-size: var(--p1-text-xs);
+  font-weight: var(--p1-weight-bold);
+  letter-spacing: 0.04em;
+  padding: var(--p1-space-sm) var(--p1-space-md);
+  text-transform: uppercase;
+}

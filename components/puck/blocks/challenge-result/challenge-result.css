@@ -1,0 +1,83 @@
+.p1-challenge-result__list {
+  display: grid;
+  gap: var(--p1-space-md);
+}
+
+.p1-challenge-result__root[data-layout="3-column"] .p1-challenge-result__list {
+  gap: var(--p1-space-lg);
+  grid-template-columns: repeat(var(--cols, 3), minmax(0, 1fr));
+}
+
+@media (width < 45rem) {
+  .p1-challenge-result__root[data-layout="3-column"] .p1-challenge-result__list {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.p1-challenge-result__root[data-layout="timeline"] .p1-challenge-result__list {
+  border-inline-start: 2px solid var(--p1-border-strong);
+  padding-inline-start: var(--p1-space-lg);
+}
+
+.p1-sec[data-tone="dark"] .p1-challenge-result__root[data-layout="timeline"] .p1-challenge-result__list {
+  border-inline-start-color: var(--p1-border-inverse-strong);
+}
+
+.p1-challenge-result__item {
+  background-color: var(--p1-surface-subtle);
+  border-radius: var(--p1-radius-card);
+  color: var(--p1-fg-default);
+  padding: var(--p1-space-lg);
+}
+
+.p1-sec[data-tone="gray"] .p1-challenge-result__item {
+  background-color: var(--p1-surface-default);
+}
+
+.p1-sec[data-tone="dark"] .p1-challenge-result__item {
+  background-color: var(--p1-input-inverse-bg);
+  border: 1px solid var(--p1-border-inverse);
+  color: var(--p1-fg-inverse);
+}
+
+.p1-challenge-result__item[data-hot="true"] {
+  background-color: var(--p1-surface-inverse);
+  border: 0;
+  color: var(--p1-fg-inverse);
+}
+
+.p1-sec[data-tone="dark"] .p1-challenge-result__item[data-hot="true"] {
+  background-color: var(--p1-cta-bg);
+  color: var(--p1-cta-fg);
+}
+
+.p1-challenge-result__label {
+  font-size: var(--p1-text-xs);
+  font-weight: var(--p1-weight-bold);
+  letter-spacing: 0.14em;
+  margin-block-end: var(--p1-space-md);
+  opacity: 0.65;
+  text-transform: uppercase;
+}
+
+.p1-challenge-result__title {
+  font-family: var(--p1-font-heading);
+  font-size: var(--p1-text-lg);
+  line-height: var(--p1-leading-tight);
+  margin: 0 0 var(--p1-space-sm);
+}
+
+.p1-challenge-result__text {
+  font-size: var(--p1-text-base);
+  line-height: var(--p1-leading-normal);
+  margin: 0;
+  opacity: 0.8;
+}
+
+.p1-challenge-result__metric {
+  font-family: var(--p1-font-heading);
+  font-size: var(--p1-text-2xl);
+  font-weight: var(--p1-weight-bold);
+  letter-spacing: -0.02em;
+  margin-block-start: var(--p1-space-lg);
+}

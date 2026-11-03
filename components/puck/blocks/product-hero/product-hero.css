@@ -1,0 +1,72 @@
+.p1-product-hero__body {
+  align-items: center;
+  display: grid;
+  gap: var(--p1-space-2xl);
+}
+@media (width >= 48rem) {
+  .p1-product-hero__body:not([data-layout="full-bleed"]) { grid-template-columns: 1fr 1.1fr; }
+}
+.p1-product-hero__body[data-layout="full-bleed"] .p1-product-hero__copy { margin-inline: auto; text-align: center; }
+.p1-product-hero__body[data-layout="full-bleed"] .p1-product-hero__actions { justify-content: center; }
+
+.p1-product-hero__product {
+  color: var(--p1-fg-muted);
+  font-size: var(--p1-text-sm);
+  font-weight: var(--p1-weight-bold);
+  letter-spacing: 0.08em;
+  margin: 0 0 var(--p1-space-md);
+  text-transform: uppercase;
+}
+.p1-product-hero__heading {
+  font-family: var(--p1-font-heading);
+  font-size: var(--p1-text-4xl);
+  line-height: var(--p1-leading-tight);
+  margin: 0 0 var(--p1-space-md);
+}
+.p1-product-hero__subtitle {
+  color: var(--p1-fg-muted);
+  font-size: var(--p1-text-lg);
+  margin: 0 0 var(--p1-space-lg);
+  max-inline-size: 32rem;
+}
+.p1-product-hero__body[data-layout="full-bleed"] .p1-product-hero__subtitle { margin-inline: auto; }
+.p1-product-hero__actions { display: flex; flex-wrap: wrap; gap: var(--p1-space-md); }
+
+.p1-sec[data-tone="dark"] .p1-product-hero__product,
+.p1-sec[data-tone="dark"] .p1-product-hero__subtitle { color: var(--p1-fg-inverse-muted); }
+.p1-sec[data-tone="dark"] .p1-product-hero__actions .p1-btn[data-variant="secondary"] {
+  background: transparent;
+  border-color: var(--p1-border-inverse-strong);
+  color: var(--p1-fg-inverse);
+}
+
+.p1-product-hero__frame {
+  border-radius: var(--p1-radius-card);
+  overflow: hidden;
+}
+.p1-product-hero__frame[data-browser="on"] { border: 1px solid var(--p1-border); }
+.p1-sec[data-tone="dark"] .p1-product-hero__frame[data-browser="on"] { border-color: var(--p1-border-inverse); }
+.p1-product-hero__bar { display: none; gap: 6px; padding: var(--p1-space-sm) var(--p1-space-md); }
+.p1-product-hero__frame[data-browser="on"] .p1-product-hero__bar {
+  border-block-end: 1px solid var(--p1-border);
+  display: flex;
+}
+.p1-product-hero__bar span {
+  background: var(--p1-border-strong);
+  block-size: 0.5rem;
+  border-radius: 50%;
+  inline-size: 0.5rem;
+}
+.p1-product-hero__screen { aspect-ratio: 16 / 10; display: block; inline-size: 100%; object-fit: cover; }
+
+.p1-product-hero__code {
+  background: var(--p1-surface-dark);
+  border-radius: var(--p1-radius-card);
+  color: var(--p1-fg-inverse-faint);
+  font-family: ui-monospace, monospace;
+  font-size: var(--p1-text-sm);
+  line-height: 1.7;
+  margin: 0;
+  overflow: auto;
+  padding: var(--p1-space-lg);
+}

@@ -1,0 +1,192 @@
+.p1-pricing { background-color: var(--p1-surface-subtle); }
+
+.p1-pricing__inner {
+  margin-inline: auto;
+  max-inline-size: var(--p1-container-wide);
+}
+
+.p1-pricing__header {
+  margin-block-end: var(--p1-space-xl);
+  text-align: center;
+}
+.p1-pricing__eyebrow {
+  color: var(--p1-accent);
+  font-size: var(--p1-text-xl);
+  font-style: italic;
+  margin-block-end: var(--p1-space-sm);
+}
+.p1-pricing__heading {
+  font-size: var(--p1-text-2xl);
+  font-weight: var(--p1-weight-bold);
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+@media (width >= 48rem) {
+  .p1-pricing__heading { font-size: var(--p1-text-3xl); }
+}
+.p1-pricing__subtitle {
+  color: var(--p1-fg-muted);
+  margin-block-start: var(--p1-space-sm);
+}
+
+.p1-pricing__grid {
+  align-items: start;
+  display: grid;
+  gap: var(--p1-space-md);
+  grid-template-columns: 1fr;
+}
+@media (width < 48rem) {
+  .p1-pricing__grid { grid-template-columns: 1fr !important; }
+}
+
+.p1-pricing__card {
+  border-radius: var(--p1-radius-card);
+  border: 1px solid var(--p1-border);
+  background-color: var(--p1-surface-default);
+  box-shadow: var(--p1-shadow-sm);
+  color: var(--p1-fg-default);
+  padding: var(--p1-space-lg);
+  position: relative;
+}
+.p1-pricing__card[data-featured="on"] {
+  background-color: var(--p1-accent);
+  border-color: var(--p1-accent);
+  box-shadow: var(--p1-shadow-card-featured);
+  color: var(--p1-fg-inverse);
+  transform: translateY(-0.5rem);
+}
+
+.p1-pricing__badge {
+  background-color: var(--p1-highlight);
+  border-radius: var(--p1-radius-pill);
+  color: var(--p1-fg-default);
+  font-size: 0.625rem;
+  font-weight: var(--p1-weight-bold);
+  inset-block-start: -0.75rem;
+  inset-inline-start: 50%;
+  letter-spacing: 0.08em;
+  padding: 0.2rem var(--p1-space-sm);
+  position: absolute;
+  text-transform: uppercase;
+  transform: translateX(-50%);
+}
+
+.p1-pricing__tier-name { font-weight: var(--p1-weight-bold); }
+
+.p1-pricing__price-row {
+  align-items: baseline;
+  display: flex;
+  gap: 0.25rem;
+  margin-block: var(--p1-space-sm) var(--p1-space-md);
+}
+.p1-pricing__price {
+  font-size: var(--p1-text-3xl);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+.p1-pricing__period {
+  font-size: var(--p1-text-sm);
+  opacity: 0.7;
+}
+
+.p1-pricing__features {
+  display: flex;
+  flex-direction: column;
+  gap: var(--p1-space-sm);
+  list-style: none;
+  margin-block-end: var(--p1-space-lg);
+  padding: 0;
+}
+.p1-pricing__feature {
+  align-items: start;
+  display: flex;
+  font-size: var(--p1-text-sm);
+  gap: var(--p1-space-sm);
+}
+.p1-pricing__check {
+  block-size: 1rem;
+  color: var(--p1-success);
+  flex: none;
+  inline-size: 1rem;
+  margin-block-start: 0.125rem;
+}
+.p1-pricing__card[data-featured="on"] .p1-pricing__check { color: var(--p1-highlight); }
+
+.p1-pricing__feature-text { color: var(--p1-fg-muted); }
+.p1-pricing__card[data-featured="on"] .p1-pricing__feature-text { color: var(--p1-fg-inverse-faint); }
+
+.p1-pricing__btn { inline-size: 100%; justify-content: center; }
+
+.p1-pricing__blurb {
+  font-size: var(--p1-text-sm);
+  margin-block-start: var(--p1-space-xs);
+  opacity: 0.8;
+}
+
+/* Billing toggle: the checkbox is hidden but keyboard focusable; checking it swaps monthly for yearly prices. */
+.p1-pricing__billing {
+  border: 1px solid var(--p1-border);
+  border-radius: var(--p1-radius-pill);
+  cursor: pointer;
+  display: flex;
+  font-size: var(--p1-text-sm);
+  font-weight: var(--p1-weight-bold);
+  margin-block-end: var(--p1-space-xl);
+  margin-inline: auto;
+  padding: var(--p1-space-xs);
+  inline-size: fit-content;
+}
+.p1-pricing__billing-opt {
+  border-radius: var(--p1-radius-pill);
+  color: var(--p1-fg-muted);
+  padding: var(--p1-space-xs) var(--p1-space-md);
+  white-space: nowrap;
+}
+.p1-pricing__billing-opt[data-opt="monthly"] {
+  background-color: var(--p1-fg-default);
+  color: var(--p1-surface-default);
+}
+.p1-pricing__billing-input:checked + .p1-pricing__billing .p1-pricing__billing-opt[data-opt="monthly"] {
+  background-color: transparent;
+  color: var(--p1-fg-muted);
+}
+.p1-pricing__billing-input:checked + .p1-pricing__billing .p1-pricing__billing-opt[data-opt="yearly"] {
+  background-color: var(--p1-fg-default);
+  color: var(--p1-surface-default);
+}
+.p1-pricing__billing-input:focus-visible + .p1-pricing__billing {
+  outline: 2px solid var(--p1-accent);
+  outline-offset: 2px;
+}
+.p1-pricing__price[data-bill="yearly"] { display: none; }
+.p1-pricing__billing-input:checked ~ .p1-pricing__grid .p1-pricing__price[data-swap] { display: none; }
+.p1-pricing__billing-input:checked ~ .p1-pricing__grid .p1-pricing__price[data-bill="yearly"] { display: inline; }
+
+/* Stacked rows layout */
+.p1-pricing[data-layout="stacked-rows"] .p1-pricing__grid {
+  align-items: stretch;
+  gap: var(--p1-space-sm);
+  grid-template-columns: 1fr;
+}
+.p1-pricing__row {
+  align-items: center;
+  background-color: var(--p1-surface-default);
+  border: 1px solid var(--p1-border);
+  border-radius: var(--p1-radius-card);
+  color: var(--p1-fg-default);
+  display: grid;
+  gap: var(--p1-space-md);
+  padding: var(--p1-space-md) var(--p1-space-lg);
+}
+.p1-pricing__row[data-featured="on"] { border: 2px solid var(--p1-fg-default); }
+.p1-pricing__row-features {
+  color: var(--p1-fg-muted);
+  font-size: var(--p1-text-sm);
+}
+.p1-pricing__row-price { text-align: start; }
+.p1-pricing__row-price .p1-pricing__price-row { margin-block: 0; }
+@media (width >= 48rem) {
+  .p1-pricing__row { grid-template-columns: minmax(0, 1fr) minmax(0, 2fr) auto; }
+  .p1-pricing__row-price { text-align: end; }
+  .p1-pricing__row-price .p1-pricing__price-row { justify-content: flex-end; }
+}
